@@ -2,7 +2,11 @@
 
 <img src="docs/screenshots/01-landing.png" alt="Roleflow landing page" width="100%" />
 
-# Roleflow
+# NextRole
+
+NextRole is our job application workspace, built on [Roleflow](https://github.com/Deveshu04/roleflow). It adds a Chinese application tracker with interview and offer statuses, manual records, history, filtering, and CSV export.
+
+Open `/app/tracking` to manage applications. See [application tracking documentation](docs/APPLICATION_TRACKING.md) for integration and testing. The original Roleflow documentation, screenshots, and demo below describe the upstream foundation; its attribution and license are retained.
 
 **An open-source AI agent that finds real jobs, tailors your resume to each one, and fills in the actual application in your browser. Nothing is submitted until you approve.**
 

@@ -2,6 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { dataPath } from "./config";
 import type { ApplicationRun, Job, Preferences, Profile, ResumeVersion } from "./types";
+import { syncApplicationRun } from "./tracking/service";
 
 async function readJson<T>(file: string, fallback: T): Promise<T> {
   try {
@@ -100,6 +101,9 @@ export function saveRun(run: ApplicationRun) {
     if (at >= 0) all[at] = run;
     else all.unshift(run);
     await writeJson("application-runs.json", all);
+    if (run.status === "submitted") {
+      await syncApplicationRun(run).catch((error) => console.error("[tracking] Sync failed; retry from application management", error));
+    }
     return run;
   });
   runsLock = task.catch(() => {});

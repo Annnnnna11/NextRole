@@ -97,7 +97,7 @@ export default function Workspace() {
     setConnecting(true);
     try {
       setBrowser(await api<typeof browser>("/api/browser", { json: { action: "linkedin-login" } }));
-      setNotice("A Chrome window opened on LinkedIn. Sign in there yourself — Roleflow never sees your password. This page updates once you're signed in.");
+      setNotice("A Chrome window opened on LinkedIn. Sign in there yourself — NextRole never sees your password. This page updates once you're signed in.");
     } catch (err) {
       setNotice(errorText(err));
     } finally {
@@ -130,7 +130,7 @@ export default function Workspace() {
       <header className="flex flex-wrap items-center justify-between gap-3">
         <Link href="/" className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-ink text-white"><Logo /></span>
-          Roleflow
+          NextRole
         </Link>
         <nav className="hidden items-center gap-1 text-sm text-muted md:flex" aria-label="Workspace">
           {[["search", "Find jobs"], ["resume", "Resume"], ["jobs", "Apply"], ["history", "History"]].map(([id, label]) => (
@@ -139,6 +139,7 @@ export default function Workspace() {
           <button onClick={() => { setMode("autopilot"); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="rounded-lg px-3 py-1.5 font-medium text-accent hover:bg-soft">Autopilot</button>
         </nav>
         <div className="flex flex-wrap items-center gap-2 text-xs">
+          <Link href="/app/tracking" className="rounded-full border border-line-strong bg-white px-3 py-1.5 font-semibold text-accent">申请管理</Link>
           <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-medium ${data?.openai.configured ? "bg-soft text-accent-dark" : "bg-danger-soft text-danger"}`}>
             <span className={`h-1.5 w-1.5 rounded-full ${data?.openai.configured ? "bg-accent" : "bg-danger"}`} />
             {data ? (data.openai.configured ? `OpenAI · ${data.openai.agentModel}` : "OpenAI key missing") : "Connecting…"}

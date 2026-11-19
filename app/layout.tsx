@@ -11,7 +11,7 @@ const serif = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Roleflow — AI job application workspace",
+  title: "NextRole — 智能求职工作台",
   description: "Find live roles, tailor your resume, and let a browser agent fill applications for your approval.",
 };
 
